@@ -8,6 +8,18 @@ class Mastermind
     @guess_counter = 0
   end
 
+  def difficulty(input)
+    if input.upcase == "B"
+      @mode = [4, 4]
+    elsif input.upcase == "I"
+      @mode = [6, 5]
+    elsif input.upcase == "H"
+      @mode = [8, 6]
+    else
+      puts "Please input (B)eginner, (I)ntermediate, or (H)ard."
+    end
+  end
+
 #creates an array of 4 random colors
   def color_gen
     @colors = []
@@ -63,21 +75,23 @@ class Mastermind
     @correct_colors
   end#def
 
+#validates guess and returns response message
   def compare
-    if @guess.size > 4
+    if @guess.include?("Q")
+      Response.new(:message => "Exiting...", :status => :quit)
+    elsif @guess.include?("C")
+       Response.new(:message => "#{@colors}. If ya ain't cheatin\', ya ain't tryin\'.", :status => :continue)
+    elsif @guess.size > 4
       Response.new(:message => "That guess is too long. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
     elsif @guess.size != 4
       Response.new(:message => "That guess is too short. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
     elsif @correct_positions == 4
       Response.new(:message => "You Win! It only took you #{@guess_counter} guesses!", :status => :won)
-    elsif @guess.include?("Q")
-      Response.new(:message => "Exiting...", :status => :quit)
-     elsif @guess.include?("C")
-       Response.new(:message => "#{@colors}. If ya ain't cheatin\', ya ain't tryin\'.", :status => :continue)
     else
       Response.new(:message => "\'#{@guess}\' had #{@correct_positions} correct positions with #{@correct_colors} correct colors! Guess again!", :status => :continue)
     end
   end#def
+
 
   def guess_counter
     @guess_counter += 1

@@ -10,7 +10,7 @@ menu_select = gets.chomp
 
 while menu_select != "q"    #will loop menu options: instructions and exceptions
 
-  if menu_select == "p"
+  if menu_select == "p"     #will print the play message, take start time and generate a secret answer
     puts mastermind.print_play
     t1 = mastermind.time
     mastermind.color_gen
@@ -32,9 +32,9 @@ while menu_select != "q"    #will loop menu options: instructions and exceptions
    if response.status == :won  #breaks out of menu loop when you win or quit, prints time on a win
      t2 = mastermind.time
      puts "Time: #{(t2 - t1).to_i} seconds"
-     break
+     break #while
    elsif response.status == :quit
-     break
+     break #while
    end#if
 
   elsif menu_select == "i"
