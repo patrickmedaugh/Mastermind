@@ -32,7 +32,6 @@ class Mastermind
     input.each_char do |char|
       @guess << char.upcase
     end
-    @guess = @guess.take(4)
     @guess
   end
 
@@ -65,7 +64,11 @@ class Mastermind
   end#def
 
   def compare
-    if @correct_positions == 4
+    if @guess.size > 4
+      Response.new(:message => "That guess is too long. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
+    elsif @guess.size != 4
+      Response.new(:message => "That guess is too short. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
+    elsif @correct_positions == 4
       Response.new(:message => "You Win! It only took you #{@guess_counter} guesses!", :status => :won)
     elsif @guess.include?("Q")
       Response.new(:message => "Exiting...", :status => :quit)

@@ -20,20 +20,54 @@ class Mastermindtest < Minitest::Test
     #skip
     mastermind = Mastermind.new()
     mastermind.color_gen
+    mastermind.compare_colors
+    mastermind.compare_positions
     assert_equal ["G", "Y", "B", "B"], mastermind.colors
   end
 
   def test_it_can_compare_guesses_and_colors
     mastermind = Mastermind.new()
     mastermind.color_gen
-    mastermind.guess_gen("gggg")
+    mastermind.guess_gen("gybb")
+    mastermind.compare_colors
+    mastermind.compare_positions
     assert_equal "You had 4 correct positions with 4 correct colors!", mastermind.compare
+  end
+
+  def test_it_can_give_a_too_short_error_message
+  end
+
+  def test_it_can_give_a_too_long_error_message
+  end
+
+  def test_it_can_return_the_correct_number_of_colors
   end
 
   def test_it_can_quit
   end
 
   def test_it_can_run_cheat_mode
+  end
+
+  def test_it_can_win
+  end
+
+  def test_it_can_count_number_of_guesses
+  end
+
+  def test_it_can_calculate_time_played
+  end
+
+  def test_it_can_print_menu
+  end
+
+  def test_it_can_print_instructions
+  end
+
+  def test_it_can_print_play_message
+  end
+
+  def test_it_can_print_exception_message
   end
   #write some more tests dumb dumb
 

@@ -25,6 +25,7 @@ while menu_select != "q"    #will loop menu options: instructions and exceptions
       mastermind.compare_colors
       mastermind.guess_counter
       response = mastermind.compare
+      #ASK JOSH CHEEK WHY @guess IS NILCLASS ON THIS FILE
       puts response.message
     end#until
 
