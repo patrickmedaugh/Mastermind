@@ -8,9 +8,16 @@ response = nil
 puts mastermind.print_menu
 menu_select = gets.chomp
 
-while menu_select != "q"    #will loop menu options: instructions and exceptions
+#will loop menu options: instructions and exceptions
+while menu_select != "q"
 
-  if menu_select == "p"     #will print the play message, take start time and generate a secret answer
+  #will print the play message, take start time and generate a secret answer
+  if menu_select == "p"
+    puts "Please select a difficulty: (B)eginner, (I)ntermediate, (H)ard."
+    print "> "
+    input = gets.chomp
+    mastermind.difficulty(input)
+
     puts mastermind.print_play
     t1 = mastermind.time
     mastermind.color_gen
@@ -23,13 +30,14 @@ while menu_select != "q"    #will loop menu options: instructions and exceptions
       mastermind.guess_gen(input)
       mastermind.compare_positions
       mastermind.compare_colors
-      mastermind.guess_counter
+      mastermind.guess_count
       response = mastermind.compare
       #ASK JOSH CHEEK WHY @guess IS NILCLASS ON THIS FILE
       puts response.message
     end#until
 
-   if response.status == :won  #breaks out of menu loop when you win or quit, prints time on a win
+    #breaks out of menu loop when you win or quit, prints time on a win
+   if response.status == :won
      t2 = mastermind.time
      puts "Time: #{(t2 - t1).to_i} seconds"
      break #while

@@ -2,19 +2,23 @@ require_relative 'response'
 
 class Mastermind
 
-  attr_reader :colors, :guess, :correct_colors, :colors_positions, :guess_counter
+  attr_reader :colors, :guess, :correct_colors, :colors_positions, :guess_counter, :mode
 
   def initialize
     @guess_counter = 0
   end
 
+#creates an array of character amount and color amount based on difficulty input
   def difficulty(input)
     if input.upcase == "B"
       @mode = [4, 4]
+      puts "Beginner Difficulty"
     elsif input.upcase == "I"
       @mode = [6, 5]
+      puts "Intermediate Difficulty"
     elsif input.upcase == "H"
       @mode = [8, 6]
+      puts "Hard Difficulty"
     else
       puts "Please input (B)eginner, (I)ntermediate, or (H)ard."
     end
@@ -23,18 +27,22 @@ class Mastermind
 #creates an array of 4 random colors
   def color_gen
     @colors = []
-    #@colors = ["G", "Y", "B", "B"]  #Test Array
-    4.times do
-      if rand(1..4) == 1
-        @colors << "G"
-      elsif rand(1..4) == 2
-        @colors << "R"
-      elsif rand(1..4) == 3
-        @colors << "B"
-      else
-        @colors << "Y"
-      end #if
-    end #do
+    @colors = ["G", "Y", "B", "B"]  #Test Array
+    # @mode[0].times do
+    #   if 1 + rand(@mode[1]) == 1
+    #     @colors << "G"
+    #   elsif 1 + rand(@mode[1]) == 2
+    #     @colors << "R"
+    #   elsif 1 + rand(@mode[1]) == 3
+    #     @colors << "B"
+    #   elsif @mode[1] > 4 && 1 + rand(@mode[1]) == 5
+    #     @colors << "W"
+    #   elsif @mode[1] > 5 && 1 + rand(@mode[1]) == 6
+    #     @colors << "P"
+    #   else
+    #     @colors << "Y"
+    #   end #if
+    # end #do
     @colors
   end #def
 
@@ -81,11 +89,11 @@ class Mastermind
       Response.new(:message => "Exiting...", :status => :quit)
     elsif @guess.include?("C")
        Response.new(:message => "#{@colors}. If ya ain't cheatin\', ya ain't tryin\'.", :status => :continue)
-    elsif @guess.size > 4
-      Response.new(:message => "That guess is too long. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
-    elsif @guess.size != 4
-      Response.new(:message => "That guess is too short. Please guess four colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
-    elsif @correct_positions == 4
+    elsif @guess.size > @mode[0]
+      Response.new(:message => "That guess is too long. Please guess #{@mode[0]} colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
+    elsif @guess.size != @mode[0]
+      Response.new(:message => "That guess is too short. Please guess #{@mode[0]} colors: (r)ed, (g)reen, (b)lue, or (y)ellow.")
+    elsif @correct_positions == @mode[0]
       Response.new(:message => "You Win! It only took you #{@guess_counter} guesses!", :status => :won)
     else
       Response.new(:message => "\'#{@guess}\' had #{@correct_positions} correct positions with #{@correct_colors} correct colors! Guess again!", :status => :continue)
@@ -93,7 +101,7 @@ class Mastermind
   end#def
 
 
-  def guess_counter
+  def guess_count
     @guess_counter += 1
   end
 
@@ -110,8 +118,13 @@ class Mastermind
   end
 
   def print_play
-    printer = Response.new(:message => nil, :status => :continue)
-    printer.play
+    if @mode[0] == 4
+      "I have generated a beginner sequence with 4 elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
+    elsif @mode[0] == 6
+      "I have generated an intermediate sequence with 6 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, and (w)hite. Use (q)uit at any time to end the game."
+    elsif @mode[0] == 8
+      "I have generated a hard sequence with 8 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, (w)hite, and (p)urple. Use (q)uit at any time to end the game."
+    end
   end
 
   def print_quit

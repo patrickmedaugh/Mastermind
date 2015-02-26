@@ -10,12 +10,8 @@ class Response
     "Would you like to (p)lay a game of Mastermind? Read the (i)nstructions or (q)uit?"
   end
 
-  def play
-    "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
-  end
-
   def instructions
-    "Here are some instructions on how to play: guess colors and stuff. that's it. kthxbai."
+    "Here are some instructions on how to play Mastermind: Take turns guessing colors in a randomly generated sequence. The game will tell you how many correct colors you guessed and how many correct colors at the correct positions you guessed. Try to guess the sequence of colors in as few guesses as possible. Please select (p)lay, (i)nstructions, or (q)uit."
   end
 
   def win
