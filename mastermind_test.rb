@@ -10,13 +10,14 @@ class Mastermindtest < Minitest::Test
   end
 
   def test_it_can_generate_a_color
+    skip#
     mastermind = Mastermind.new()
     mastermind.color_gen
     assert_equal "G", mastermind.colors[0]
   end
 
   def test_it_can_generate_an_array_of_four_colors
-    #skip
+    skip#
     mastermind = Mastermind.new()
     mastermind.color_gen
     assert_equal ["G", "Y", "B", "B"], mastermind.colors

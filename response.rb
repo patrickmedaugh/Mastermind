@@ -14,6 +14,10 @@ class Response
     "Here are some instructions on how to play Mastermind: Take turns guessing colors in a randomly generated sequence. The game will tell you how many correct colors you guessed and how many correct colors at the correct positions you guessed. Try to guess the sequence of colors in as few guesses as possible. Please select (p)lay, (i)nstructions, or (q)uit."
   end
 
+  def difficult
+    "Please select a difficulty: (B)eginner, (I)ntermediate, (H)ard."
+  end
+
   def win
     "You Win!"
   end
