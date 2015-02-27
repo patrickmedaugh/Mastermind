@@ -45,7 +45,7 @@ while menu_select != "q"
      break
    end
 
-
+   #other menu options
   elsif menu_select == "i"
     puts mastermind.print_instruct
     menu_select = gets.chomp
@@ -56,6 +56,7 @@ while menu_select != "q"
   end
 end
 
+#Add "Do you want to play again?"
 if menu_select != "p"
 puts mastermind.print_quit
 end

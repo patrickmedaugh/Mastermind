@@ -18,12 +18,16 @@ class Response
     "Please select a difficulty: (B)eginner, (I)ntermediate, (H)ard."
   end
 
-  def win
-    "You Win!"
+  def beginner
+    "I have generated a beginner sequence with 4 elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
   end
 
-  def quit
-    "Exiting..."
+  def intermediate
+    "I have generated an intermediate sequence with 6 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, and (w)hite. Use (q)uit at any time to end the game."
+  end
+
+  def hard
+    "I have generated a hard sequence with 8 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, (w)hite, and (p)urple. Use (q)uit at any time to end the game."
   end
 
   def exception

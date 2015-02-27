@@ -45,7 +45,7 @@ class Mastermindtest < Minitest::Test
     mastermind.compare_colors
     response = mastermind.compare
     message = response.message
-    assert_equal "That guess is too short. Please guess 4 colors: (r)ed, (g)reen, (b)lue, or (y)ellow.", message
+    assert_equal "That guess is too short. Please guess 4 colors.", message
   end
 
   def test_it_can_give_a_too_long_error_message
@@ -57,7 +57,7 @@ class Mastermindtest < Minitest::Test
     mastermind.compare_colors
     response = mastermind.compare
     message = response.message
-    assert_equal "That guess is too long. Please guess 4 colors: (r)ed, (g)reen, (b)lue, or (y)ellow.", message
+    assert_equal "That guess is too long. Please guess 4 colors.", message
   end
 
   def test_it_can_return_the_correct_number_of_colors

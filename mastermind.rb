@@ -16,7 +16,7 @@ class Mastermind
     Time.now
   end
 
-#creates an array of character amount and color amount based on difficulty input
+#sets the difficulty setting
   def difficulty(input)
     difficulty_level = input.upcase
     case difficulty_level
@@ -35,27 +35,24 @@ class Mastermind
   end
 
 
-#creates an array of 4 random colors
+#creates an array of random colors based on difficulty setting
   def color_gen
     @colors = []
-    #@colors = ["G", "Y", "B", "B"]  #Test Array
     number_of_chars = @mode[0]
+    number_of_colors = @mode[1]
+    case number_of_colors
+    when 4
+      color_options = ["G", "R", "Y", "B"]
+    when 5
+      color_options = ["G", "R", "Y", "B", "W"]
+    when 6
+      color_options = ["G", "R", "Y", "B", "W", "P"]
+    end
     number_of_chars.times do
-      if 1 + rand(@mode[1]) == 1
-        @colors << "G"
-      elsif 1 + rand(@mode[1]) == 2
-        @colors << "R"
-      elsif 1 + rand(@mode[1]) == 3
-        @colors << "B"
-      elsif @mode[1] > 4 && 1 + rand(@mode[1]) == 5
-        @colors << "W"
-      elsif @mode[1] > 5 && 1 + rand(@mode[1]) == 6
-        @colors << "P"
-      else
-        @colors << "Y"
-      end
+      @colors << color_options.sample
     end
     @colors
+    #@colors = ["G", "Y", "B", "B"]  #Test Array
   end
 
 #creates an array out of GUESS input
@@ -67,7 +64,7 @@ class Mastermind
     @guess
   end
 
-#compares the colors at each index to count matches of color & position
+#counts the number of color & position matches
   def compare_positions
     @correct_positions = 0
     answer = @colors
@@ -82,8 +79,7 @@ class Mastermind
     @correct_positions
   end
 
-#compares the colors guessed against the answer array. If we find a match in the
-#answer array we remove it to avoid double counting.
+#counts the number of just color matches
   def compare_colors
     @correct_colors = 0
     answer = @colors.dup
@@ -99,7 +95,7 @@ class Mastermind
     @correct_colors
   end
 
-#validates guess and returns response message
+#in-game response message
   def compare
     number_of_chars = @mode[0]
     player_input = @guess
@@ -119,16 +115,17 @@ class Mastermind
     end
   end
 
-#PRINTS MESSAGES
+#menu messages
   def print_play
+    printer = Response.new(:message => nil, :status => :continue)
     number_of_elements = @mode[0]
     case number_of_elements
     when 4
-      "I have generated a beginner sequence with 4 elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
+      printer.beginner
     when 6
-      "I have generated an intermediate sequence with 6 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, and (w)hite. Use (q)uit at any time to end the game."
+      printer.intermediate
     when 8
-      "I have generated a hard sequence with 8 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, (w)hite, and (p)urple. Use (q)uit at any time to end the game."
+      printer.hard
     end
   end
 
