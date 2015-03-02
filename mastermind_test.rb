@@ -10,15 +10,15 @@ class Mastermindtest < Minitest::Test
   end
 
   def test_it_can_generate_a_color
-    skip#
     mastermind = Mastermind.new()
+    mastermind.difficulty("B")
     mastermind.color_gen
     assert_equal "G", mastermind.colors[0]
   end
 
   def test_it_can_generate_an_array_of_four_colors
-    skip#
     mastermind = Mastermind.new()
+    mastermind.difficulty("B")
     mastermind.color_gen
     assert_equal ["G", "Y", "B", "B"], mastermind.colors
   end
@@ -112,14 +112,10 @@ class Mastermindtest < Minitest::Test
     assert_equal 4, mastermind.guess_count
   end
 
-  def test_it_can_calculate_time_played
-    skip
-  end
-
   def test_it_can_print_menu
     mastermind = Mastermind.new
     response = mastermind.print_menu
-    assert_equal "Would you like to (p)lay a game of Mastermind? Read the (i)nstructions or (q)uit?",response
+    assert_equal "Would you like to (p)lay a game of Mastermind? Read the (i)nstructions or (q)uit?", response
   end
 
   def test_it_can_print_instructions

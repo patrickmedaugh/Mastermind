@@ -40,7 +40,7 @@ while menu_select != "q"
      puts "Time: #{(t2 - t1).to_i} seconds"
      print mastermind.play_again
      menu_select = gets.chomp
-
+     
    elsif response.status == :quit
      break
    end
