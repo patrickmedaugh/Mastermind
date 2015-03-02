@@ -52,7 +52,7 @@ class Mastermind
       @colors << color_options.sample
     end
     @colors
-    @colors = ["G", "Y", "B", "B"]  #Test Array
+    #@colors = ["G", "Y", "B", "B"]  #Test Array
   end
 
 #creates an array out of GUESS input
