@@ -25,11 +25,11 @@ while menu_select != "q"
     t1 = mastermind.time
     mastermind.color_gen
     response = nil
+
     #runs the game until user wins or quits
     until (response && response.status == :won) || (response && response.status == :quit)
       print "> "
       input = gets.chomp
-
       mastermind.guess_gen(input)
       mastermind.compare_positions
       mastermind.compare_colors
