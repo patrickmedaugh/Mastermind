@@ -33,7 +33,11 @@ class Response
   def quit
     "Exiting..."
   end
-  
+
+  def again
+    "Would you like to play again? (P)lay, (I)nstructions, or (Q)uit?"
+  end
+
   def exception
     "I didn't catch that. Please select (p)lay, (i)nstructions, or (q)uit."
   end

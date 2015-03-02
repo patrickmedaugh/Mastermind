@@ -116,7 +116,6 @@ class Mastermind
   end
 
 #menu messages
-
   def print_play
     printer = Response.new(:message => nil, :status => :continue)
     number_of_elements = @mode[0]
@@ -128,6 +127,10 @@ class Mastermind
     when 8
       printer.hard
     end
+  end
+
+  def play_again
+    puts "Would you like to play again? (P)lay, (I)nstructions, or (Q)uit?"
   end
 
   def print_menu

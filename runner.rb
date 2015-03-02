@@ -38,7 +38,7 @@ while menu_select != "q"
    if response.status == :won
      t2 = mastermind.time
      puts "Time: #{(t2 - t1).to_i} seconds"
-     puts "Would you like to play again? (P)lay, (I)nstructions, or (Q)uit?"
+     print mastermind.play_again
      menu_select = gets.chomp
 
    elsif response.status == :quit
@@ -56,7 +56,6 @@ while menu_select != "q"
   end
 end
 
-#Add "Do you want to play again?"
 if menu_select != "p"
 puts mastermind.print_quit
 end
