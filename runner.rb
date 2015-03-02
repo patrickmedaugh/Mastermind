@@ -1,9 +1,8 @@
 require './mastermind'
 
 puts "Welcome to Mastermind"
-response = nil
 mastermind = Mastermind.new
-
+response = nil
 #user makes first menu selection
 puts mastermind.print_menu
 menu_select = gets.chomp
@@ -21,7 +20,7 @@ while menu_select != "q"
     puts mastermind.print_play
     t1 = mastermind.time
     mastermind.color_gen
-
+    response = nil
     #runs the game until user wins or quits
     until (response && response.status == :won) || (response && response.status == :quit)
       print "> "
@@ -39,7 +38,8 @@ while menu_select != "q"
    if response.status == :won
      t2 = mastermind.time
      puts "Time: #{(t2 - t1).to_i} seconds"
-     break
+     puts "Would you like to play again? (P)lay, (I)nstructions, or (Q)uit?"
+     menu_select = gets.chomp
 
    elsif response.status == :quit
      break

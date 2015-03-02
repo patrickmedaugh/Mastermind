@@ -30,6 +30,10 @@ class Response
     "I have generated a hard sequence with 8 elements made up of: (r)ed, (g)reen, (b)lue, (y)ellow, (w)hite, and (p)urple. Use (q)uit at any time to end the game."
   end
 
+  def quit
+    "Exiting..."
+  end
+  
   def exception
     "I didn't catch that. Please select (p)lay, (i)nstructions, or (q)uit."
   end

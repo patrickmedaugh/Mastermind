@@ -116,6 +116,7 @@ class Mastermind
   end
 
 #menu messages
+
   def print_play
     printer = Response.new(:message => nil, :status => :continue)
     number_of_elements = @mode[0]
