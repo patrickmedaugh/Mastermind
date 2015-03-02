@@ -130,7 +130,8 @@ class Mastermind
   end
 
   def play_again
-    puts "Would you like to play again? (P)lay, (I)nstructions, or (Q)uit?"
+    printer = Response.new(:message => nil, :status => :continue)
+    printer.again
   end
 
   def print_menu
