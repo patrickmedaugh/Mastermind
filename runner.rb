@@ -11,9 +11,13 @@ while menu_select != "q"
 
   #user selects difficulty
   if menu_select == "p"
+    difficulty_selected = nil
+    until difficulty_selected == "B" || difficulty_selected == "I" || difficulty_selected == "H"
     puts mastermind.print_difficulty
     print "> "
     input = gets.chomp
+    difficulty_selected = input.upcase
+    end
     mastermind.difficulty(input)
 
     #generates secret answer & starts the game
@@ -40,7 +44,7 @@ while menu_select != "q"
      puts "Time: #{(t2 - t1).to_i} seconds"
      print mastermind.play_again
      menu_select = gets.chomp
-     
+
    elsif response.status == :quit
      break
    end
