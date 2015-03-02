@@ -100,9 +100,9 @@ class Mastermind
     number_of_chars = @mode[0]
     player_input = @guess
 
-    if player_input.include?("Q")
+    if player_input[0] == ("Q")
       Response.new(:message => "Exiting...", :status => :quit)
-    elsif player_input.include?("C")
+    elsif player_input[0] == ("C")
        Response.new(:message => "#{@colors}. If ya ain't cheatin\', ya ain't tryin\'.", :status => :continue)
     elsif player_input.size > number_of_chars
       Response.new(:message => "That guess is too long. Please guess #{number_of_chars} colors.")
